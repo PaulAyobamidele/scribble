@@ -1,0 +1,13 @@
+<table>
+    <tr>
+        <th>Notes</th>
+    </tr>
+    {% for note in notes %}
+    <tr>
+        <td>{{ note.title }}</td>
+        <td><a href="{% url 'note' note.id %}"></a></td>
+    </tr>
+    {% empty%}
+    <h3>Create your first vanilla note</h3>
+    {% endfor %}
+</table>
