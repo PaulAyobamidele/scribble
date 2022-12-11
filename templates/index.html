@@ -20,7 +20,11 @@
             
             <div id="nav">
                 <ul>
+                    {% if request.user.is_authenticated %}
+                    <li><a class="opaque" href="{% url 'notes' %}">Go to Notes</a></li>
+                    {% else %}
                     <li><a class="opaque" href="">how we work</a></li>
+                    {% endif %}
                     <li><a class="opaque" href="">Why scribble</a></li>
                     {% if request.user.is_authenticated %}
                     <li><a class="opaque" href="{% url 'logout' %}">Logout</a></li>

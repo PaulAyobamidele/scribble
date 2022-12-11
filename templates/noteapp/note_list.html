@@ -1,24 +1,52 @@
 {% extends 'index.html' %}
 
 {% block content %}
-<div class="note-card">
-    <table>
-        <tr>
-            <th>Notes</th>
-        </tr>
-        {% for note in notes %}
-        <tr>
-            <td>{{ note.title }}</td>
-            <td><a href="{% url 'note' note.id %}">Open</a></td>
-        </tr>
-        {% empty %}
-        <div class="create" style="display: flex; justify-content: space-between; padding: 3rem 8rem;">
-            <h3>Create your first vanilla note</h3>
-            <button><a style="text-decoration: none; " href="{% url 'note-create' %}">Create Note</a></button>
+
+
+<div class="card-container">
+    <div class="card-box">
+        <div class="header-bar">
+            <div>
+                <h2>Hello {{request.user|title}},</h2>
+                <p>You have <i>{{count}}</i> incomplete task{{count|pluralize:"s"}}</p>
+            </div>
         </div>
-    
-        {% endfor %}
-    </table>
+        <table>
+            <tr>
+
+                <div class="add-note">
+                    <h2>Create New Notes</h2>
+                    <button><a href="{% url 'note-create' %}">Add Note</a></button>
+                </div>
+            </tr>
+
+            {% for note in notes %}
+            <div class="note-list">
+                <div class="note-titles">
+                    <p>{{ note.title }}</p>
+                </div>
+                
+                <div class="icon">
+                    <a href="{% url 'note-update' note.id %}"><img
+                        src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAARJJREFUSEvdle0RwUAQhp9UgArogBLohA7ogA50gEoogQ7oQAfMa3Jmc/m4u5Ax435lks37tTt7GR2frGN8vkWwBB7AAbhb0T7BFNgBo4CzBbAH+sARmOT1Z2BmSXyCKzBsAX7J/xkDBRKfQDZ1QtFZ5QKXc50TIJIVsK0CiiGoi0V4Lq4NsG5D4CsXhotFz+qFc/RqdkpEoViEVwBPIagCl8K69+85iXGQCq6YNEmV0+I3uQ24Gj2IJZASNdFm2xSLYuvZ3oYico6kKCbz0pjHEqgu2NB8HxWGJ5bAbo/SKJqPrR04jCZw1SQTBPZe6fPvCdyYpSq39Td7n1RdOLpIQndCnQCBz/O1HbX3P3HyJwRPUqJjGRVuJEcAAAAASUVORK5CYII=" /></a>
+                    <a href="{% url 'note-delete' note.id %}">
+                        <img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAJ9JREFUSEvt1csRwjAMRdGTSigB6IQSSAeUQCdQAp0AHZBKYFjwCzFyMgmbREuP5l3p2ZYKA0cxsL4cwBq7RCEl9r+KjAALHIMulzilcuqAa0+WPXX/DuipgZdM6g66WvWlNw7Ao8u6bU3nnSyaAI1P/93vyaIRWNRmAGZ/tAtmbZRxxn1BfURq2K2wxTwTUmGDQy4gUzdOi3ZyrBBk3AB+wyoZJl1mqQAAAABJRU5ErkJggg==" />
+                    </a>
+                    
+                </div>
+                
+            </div>
+                
+   
+            
+            {% empty %}
+            <p>Oops, No Notes Here</p>
+            {% endfor %}
+        </table>
+    </div>
 </div>
+
+
 
 {% endblock %}

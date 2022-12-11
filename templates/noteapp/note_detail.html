@@ -1,2 +1,11 @@
-<h1>Note:{{note}}</h1>
-<p>{{note.content}}</p>
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="card-container">
+    <div class="card-box">
+        <h1>{{note}}</h1>
+        <p>{{note.content}}</p>
+</div>
+</div>
+{% endblock %}

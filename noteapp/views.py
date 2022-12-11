@@ -38,6 +38,10 @@ class NoteCreate(LoginRequiredMixin, CreateView):
     template_name = 'noteapp/note_form.html'
     success_url = reverse_lazy('notes')
 
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super(NoteCreate, self).form_valid(form)
+
 class NoteUpdate(LoginRequiredMixin, UpdateView):
     model = Note
     fields = ['title', 'content', 'complete']

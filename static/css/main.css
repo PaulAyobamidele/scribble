@@ -332,17 +332,17 @@ footer {
 
 .card-container {
     display: flex;
-    align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 100vh;
+    height: auto;
+    margin: 5% 0;
 }
 
 .card-box {
     background-color: #fff;
     border-radius: 4px;
     padding: 3rem 2rem;
-    width: 30%;
+    width: 50%;
     box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);
 }
 
@@ -369,4 +369,14 @@ footer {
 .card-box .button:hover{
    background-color: var(--dark_violet);
    color: #fff;
+}
+
+.add-note h2, button{
+    text-align: center;
+}
+
+.note-list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
 }
