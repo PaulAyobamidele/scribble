@@ -1,13 +1,24 @@
-<table>
-    <tr>
-        <th>Notes</th>
-    </tr>
-    {% for note in notes %}
-    <tr>
-        <td>{{ note.title }}</td>
-        <td><a href="{% url 'note' note.id %}"></a></td>
-    </tr>
-    {% empty%}
-    <h3>Create your first vanilla note</h3>
-    {% endfor %}
-</table>
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="note-card">
+    <table>
+        <tr>
+            <th>Notes</th>
+        </tr>
+        {% for note in notes %}
+        <tr>
+            <td>{{ note.title }}</td>
+            <td><a href="{% url 'note' note.id %}">Open</a></td>
+        </tr>
+        {% empty %}
+        <div class="create" style="display: flex; justify-content: space-between; padding: 3rem 8rem;">
+            <h3>Create your first vanilla note</h3>
+            <button><a style="text-decoration: none; " href="{% url 'note-create' %}">Create Note</a></button>
+        </div>
+    
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

@@ -3,6 +3,8 @@ from . import views
 from .views import NoteList, NoteDetail, NoteCreate, NoteUpdate,NoteDelete, RegisterPage
 from .views import CustomLoginView
 from django.contrib.auth.views import LogoutView
+
+
 urlpatterns = [
     path('', views.home, name='home'),
     path('login/', CustomLoginView.as_view(), name="login"),

@@ -91,7 +91,7 @@ nav {
 
 .register:hover {
     background-color: var(--dark_violet);
-    color: var(--very_light_gray);
+    color: #fff;
 }
 
 #nav ul li a:hover {
@@ -161,7 +161,6 @@ button {
 button a {
     text-decoration: none;
     color: var(--very_light_gray);
-    
     letter-spacing: 4px;
     font-size: 14px;
     font-weight: 800;

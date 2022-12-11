@@ -21,6 +21,12 @@ class NoteList(LoginRequiredMixin, ListView):
     model = Note
     context_object_name = 'notes'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['notes'] = context['notes'].filter(user=self.request.user)
+        context['count'] = context['notes'].filter(complete=False).count()
+        return context
+
 class NoteDetail(LoginRequiredMixin, DetailView):
     model = Note
     context_object_name = 'note'
